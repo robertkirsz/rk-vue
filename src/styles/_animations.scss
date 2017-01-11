@@ -1,0 +1,99 @@
+@import "variables";
+
+%animation {
+  animation-fill-mode: forwards;
+  animation-duration: $time;
+}
+
+.slideInLeft    { @extend %animation; animation-name: slideInLeft; }
+.slideOutLeft   { @extend %animation; animation-name: slideOutLeft; }
+.slideInRight   { @extend %animation; animation-name: slideInRight; }
+.slideOutRight  { @extend %animation; animation-name: slideOutRight; }
+.slideInTop     { @extend %animation; animation-name: slideInTop; }
+.slideOutTop    { @extend %animation; animation-name: slideOutTop; }
+.slideInBottom  { @extend %animation; animation-name: slideInBottom; }
+.slideOutBottom { @extend %animation; animation-name: slideOutBottom; }
+.headerHide     { @extend %animation; animation-name: headerHide; }
+.fadeIn         { @extend %animation; animation-name: fadeIn; }
+.fadeOut        { @extend %animation; animation-name: fadeOut; }
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes slideInLeft {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes slideOutLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes slideInRight {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes slideInTop {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes slideOutTop {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes slideInBottom {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes slideOutBottom {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes headerHide {
+  to { transform: translateY(-200px); opacity: 0.25; }
+}
+
+// Pagination
+
+@keyframes page-move {
+	  0% { transform: scale(1, 1); }
+	 20% { transform: scale(1, 0.5); }
+	 40% { transform: scale(1, 0.5); }
+	100% { transform: scale(1, 1); }
+}
+
+@keyframes li-move-right {
+	  0% { transform: translateX(0px); }
+	 20% { transform: translateX(5px); }
+	 40% { transform: translateX(-2px); }
+	 60% { transform: translateX(1px); }
+	 80% { transform: translateX(0px); }
+	100% { transform: translateX(0px); }
+}
+
+@keyframes li-move-left {
+	  0% { transform: translateX(0px); }
+	 20% { transform: translateX(-5px); }
+	 40% { transform: translateX(2px); }
+	 60% { transform: translateX(-1px); }
+	 80% { transform: translateX(0px); }
+	100% { transform: translateX(0px); }
+}
