@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import SkillItem from './SkillItem'
+  import SkillItem from 'components/SkillItem'
 
   export default {
     name: 'SkillsPage',

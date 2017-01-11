@@ -78,7 +78,7 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../styles/variables";
+  @import "../styles/variables";
 
   $elementWidth: 100px;
   $elementHeight: 40px;
