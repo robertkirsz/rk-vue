@@ -41,8 +41,8 @@
         // Determine animation direction based on route indexes
         this.animationDirection =
           to.meta.routeIndex < from.meta.routeIndex
-            ? 'slide-left'
-            : 'slide-right'
+            ? 'route-animation-left'
+            : 'route-animation-right'
       },
       title (value) {
         document.title = value
@@ -87,20 +87,15 @@
     }
   }
 
-  .slide-right-enter-active {
-    @extend .slideInRight;
-  }
-
-  .slide-right-leave-active {
-    @extend .slideOutLeft;
-  }
-
-  .slide-left-enter-active {
-    @extend .slideInLeft;
-  }
-
-  .slide-left-leave-active {
-    @extend .slideOutRight;
+  .route-animation {
+    &-left {
+      &-enter-active { @extend .slideInLeft; }
+      &-leave-active { @extend .slideOutRight; }
+    }
+    &-right {
+      &-enter-active { @extend .slideInRight; }
+      &-leave-active { @extend .slideOutLeft; }
+    }
   }
 
   .page-navigation-animation {
