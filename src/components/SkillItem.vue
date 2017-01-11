@@ -1,32 +1,27 @@
 <template>
-  <router-link
-    class="work"
-    :to="`/works/${work.path}`"
-    :style="style"
-    :title="work.name"
-  />
+  <div class="skill" :style="style" :title="skill.name" />
 </template>
 
 <script>
   export default {
-    name: 'WorkItem',
+    name: 'SkillItem',
     props: {
-      work: Object
+      skill: Object
     },
     data () {
       return {
-        style: `background-image: url(../../static/work/${this.work.screenshot.desktop || this.work.screenshot.mobile})`
+        style: `background-image: url(../../static/skills/${this.skill.icon})`
       }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  @import "../../styles/variables";
+  @import "../styles/variables";
 
-  $horizontalMargin: 20px;  // TODO: This also appears in SkillsPage and SkillItem - put it in one place
+  $horizontalMargin: 20px;  // TODO: This also appears in SkillsPage - put it in one place
 
-  .work {
+  .skill {
     @extend %transition;
     $itemsNumber: 3;
     $size: (calc((100vw - #{$horizontalMargin * 2}) / #{$itemsNumber}));

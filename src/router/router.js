@@ -1,15 +1,27 @@
-import Vue          from 'vue'
-import VueRouter    from 'vue-router'
-import MePage       from 'components/MainContent/MePage'
-import SkillsPage   from 'components/MainContent/SkillsPage'
-import WorksPage    from 'components/MainContent/WorksPage'
-import WorkPage     from 'components/MainContent/WorkPage'
-import ContactPage  from 'components/MainContent/ContactPage'
-import NotFoundPage from 'components/NotFoundPage'
+import Vue             from 'vue'
+import VueRouter       from 'vue-router'
+import IntroPage       from 'components/pages/IntroPage'
+import NavigationPage  from 'components/pages/NavigationPage'
+import MePage          from 'components/pages/MePage'
+import SkillsPage      from 'components/pages/SkillsPage'
+import WorksPage       from 'components/pages/WorksPage'
+import WorkPage        from 'components/pages/WorkPage'
+import ContactPage     from 'components/pages/ContactPage'
+import NotFoundPage    from 'components/pages/NotFoundPage'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    component: IntroPage,
+    meta: { routeIndex: -1 }
+  },
+  {
+    path: '/nav',
+    component: NavigationPage,
+    meta: { routeIndex: 0 }
+  },
   {
     path: '/me',
     component: MePage,

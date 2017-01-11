@@ -1,5 +1,5 @@
 <template>
-  <div class="intro-page">
+  <div class="intro-page" @click="$router.push('/nav')">
     <div class="content">
       <h1>Robert Kirsz</h1>
       <h2>Frontend developer</h2>
@@ -9,12 +9,7 @@
 
 <script>
   export default {
-    name: 'IntroPage',
-    data () {
-      return {
-        text: 'Header'
-      }
-    }
+    name: 'IntroPage'
   }
 </script>
 

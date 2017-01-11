@@ -1,6 +1,6 @@
 <template>
   <div
-    class="navigation-tiles"
+    class="navigation-page"
     :class="chosenLink && 'opened'"
   >
     <router-link
@@ -23,7 +23,7 @@
 
 <script>
   export default {
-    name: 'NavigationTiles',
+    name: 'NavigationPage',
     data () {
       return {
         links: ['me', 'skills', 'works', 'contact'],
@@ -34,11 +34,6 @@
       click (link) {
         this.chosenLink = link
       }
-    },
-    watch: {
-      chosenLink () {
-        this.$emit('pageChosen')
-      }
     }
   }
 </script>
@@ -46,7 +41,7 @@
 <style lang="scss" scoped>
   @import "../../styles/variables";
 
-  .navigation-tiles {
+  .navigation-page {
     @extend %absolute;
     @extend %transition;
     @extend %full-size;
