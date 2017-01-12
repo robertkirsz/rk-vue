@@ -13,6 +13,7 @@
 .slideOutTop    { @extend %animation; animation-name: slideOutTop; }
 .slideInBottom  { @extend %animation; animation-name: slideInBottom; }
 .slideOutBottom { @extend %animation; animation-name: slideOutBottom; }
+.headerShow     { @extend %animation; animation-name: headerShow; }
 .headerHide     { @extend %animation; animation-name: headerHide; }
 .fadeIn         { @extend %animation; animation-name: fadeIn; }
 .fadeOut        { @extend %animation; animation-name: fadeOut; }
@@ -65,6 +66,11 @@
 @keyframes slideOutBottom {
   0%   { transform: translateY(0); }
   100% { transform: translateY(100%); }
+}
+
+@keyframes headerShow {
+  from { transform: translateY(-200px); opacity: 0.25; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes headerHide {

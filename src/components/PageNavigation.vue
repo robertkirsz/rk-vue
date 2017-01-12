@@ -89,7 +89,6 @@
     position: absolute;
     bottom: 5vh; left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
     filter: url("#gooey");
   }
 

@@ -51,7 +51,7 @@
       @extend %transition;
       position: absolute;
       cursor: pointer;
-      z-index: 1;
+      z-index: 10;
       &--me {
         top: 0; right: 50%; bottom: 50%; left: 0;
         background: $green;
@@ -70,7 +70,7 @@
       }
       &.opened {
         top: 0; right: 0; bottom: 0; left: 0;
-        z-index: 10;
+        z-index: 11;
         .tile__content { opacity: 0; }
       }
       &__content {

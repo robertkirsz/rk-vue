@@ -26,7 +26,6 @@
     data () {
       return {
         title: 'Robert Kirsz',
-        // TODO: maybe use 'computed' for this? Need to learn more about that
         showPageNavigation: this.$route.path !== '/' && this.$route.path !== '/nav',
         animationDirection: null, // Used to determine animation direction
         debug: true // Shows media queries
@@ -34,15 +33,21 @@
     },
     watch: {
       '$route' (to, from) {
+        // Determine whether to show page navigation
         this.showPageNavigation = to.path !== '/' && to.path !== '/nav'
         // Update document title
-        // TODO: Show just Robert Kirsz on home page
-        this.title = `Robert Kirsz - ${_capitalize(to.path.substr(1))}`
+        this.title = this.showPageNavigation
+          ? `Robert Kirsz - ${_capitalize(to.path.substr(1))}`
+          : 'Robert Kirsz'
         // Determine animation direction based on route indexes
         this.animationDirection =
-          to.meta.routeIndex < from.meta.routeIndex
-            ? 'route-animation-left'
-            : 'route-animation-right'
+          to.meta.routeIndex < 1
+            ? to.meta.routeIndex < from.meta.routeIndex
+              ? 'route-animation-top'
+              : 'route-animation-bottom'
+            : to.meta.routeIndex < from.meta.routeIndex
+              ? 'route-animation-left'
+              : 'route-animation-right'
       },
       title (value) {
         document.title = value
@@ -77,7 +82,6 @@
     @extend %absolute;
     @extend %full-size;
     @include flex(column, nowrap, flex-start, center);
-    z-index: 1;
     &:after {
       content: "";
       display: block;
@@ -87,7 +91,28 @@
     }
   }
 
+  .intro-page { z-index: 1; }
+  .navigation-page { z-index: 2; }
+  .page { z-index: 3; }
+  .pages-navigation { z-index: 4; }
+
   .route-animation {
+    &-top {
+      &-enter-active {
+        @extend .slideInTop;
+        &.intro-page { @extend .headerShow; }
+      }
+      &-leave-active {
+        @extend .slideOutBottom;
+      }
+    }
+    &-bottom {
+      &-enter-active { @extend .slideInBottom; }
+      &-leave-active {
+        @extend .slideOutTop;
+        &.intro-page { @extend .headerHide; }
+      }
+    }
     &-left {
       &-enter-active { @extend .slideInLeft; }
       &-leave-active { @extend .slideOutRight; }
