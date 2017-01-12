@@ -14,31 +14,37 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'Intro',
     component: IntroPage,
     meta: { routeIndex: -1 }
   },
   {
     path: '/nav',
+    name: 'Navigation',
     component: NavigationPage,
     meta: { routeIndex: 0 }
   },
   {
     path: '/me',
+    name: 'Me',
     component: MePage,
     meta: { routeIndex: 1 }
   },
   {
     path: '/skills',
+    name: 'Skills',
     component: SkillsPage,
     meta: { routeIndex: 2 }
   },
   {
     path: '/works',
+    name: 'Works',
     component: WorksPage,
     meta: { routeIndex: 3 },
     children: [
       {
         path: ':id',
+        name: 'Work',
         component: WorkPage,
         meta: { routeIndex: 3 }
       }
@@ -46,11 +52,13 @@ const routes = [
   },
   {
     path: '/contact',
+    name: 'Contact',
     component: ContactPage,
     meta: { routeIndex: 4 }
   },
   {
     path: '*',
+    name: 'Not Found',
     component: NotFoundPage
   }
 ]
