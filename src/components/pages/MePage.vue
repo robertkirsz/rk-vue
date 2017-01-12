@@ -1,7 +1,7 @@
 <template>
   <div class="page me-page">
     {{ text }}
-    <counter />
+    <!-- <counter /> -->
   </div>
 </template>
 

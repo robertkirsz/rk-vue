@@ -28,7 +28,7 @@
         title: 'Robert Kirsz',
         showPageNavigation: this.$route.path !== '/' && this.$route.path !== '/nav',
         animationDirection: null, // Used to determine animation direction
-        debug: true // Shows media queries
+        debug: false // Shows media queries
       }
     },
     watch: {
@@ -60,15 +60,6 @@
   @import "styles/animations";
   @import "styles/main";
 
-
-  .header-animation-leave-active {
-    @extend .headerHide;
-  }
-
-  .navigation-tiles-animation-enter-active {
-    @extend .slideInBottom;
-  }
-
   #app {
     @extend %full-size;
     @extend %transition;
@@ -81,7 +72,8 @@
   .page {
     @extend %absolute;
     @extend %full-size;
-    @include flex(column, nowrap, flex-start, center);
+    @extend %temp-font;
+    @include flex(column, nowrap, center, center);
     &:after {
       content: "";
       display: block;

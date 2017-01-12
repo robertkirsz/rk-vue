@@ -23,7 +23,7 @@
     @extend %full-size;
     background: $light-blue;
     user-select: none;
-    cursor: default;
+    cursor: pointer;
     .content {
       text-align: center;
     }

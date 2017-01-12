@@ -117,6 +117,7 @@
   @import "../../styles/variables";
 
   .works-page {
+    justify-content: flex-start;
     background: $red;
     &:after {
       background: linear-gradient(to top, $red 25%, transparent);

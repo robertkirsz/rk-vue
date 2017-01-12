@@ -21,7 +21,5 @@
 </script>
 
 <style lang="scss" scoped>
-  .work-page {
-    background: white;
-  }
+  .work-page {}
 </style>

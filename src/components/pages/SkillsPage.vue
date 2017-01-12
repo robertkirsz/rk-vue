@@ -56,6 +56,7 @@
   $horizontalMargin: 20px;  // TODO: This also appears in SkillItem - put it in one place
 
   .skills-page {
+    justify-content: flex-start;
     background: $orange;
     &:after {
       background: linear-gradient(to top, $orange 25%, transparent);
