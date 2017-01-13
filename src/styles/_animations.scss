@@ -5,6 +5,7 @@
   animation-duration: $time;
 }
 
+.still          { @extend %animation; animation-name: still; }
 .fadeIn         { @extend %animation; animation-name: fadeIn; }
 .fadeOut        { @extend %animation; animation-name: fadeOut; }
 .slideInLeft    { @extend %animation; animation-name: slideInLeft; }
@@ -21,6 +22,11 @@
 .pageNavigationHide { @extend %animation; animation-name: pageNavigationHide; }
 
 // Generic animations
+
+@keyframes still {
+  0%   { }
+  100% { }
+}
 
 @keyframes fadeIn {
   0%   { opacity: 0; }

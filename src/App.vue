@@ -114,11 +114,11 @@
     }
     &-left {
       &-enter-active { @extend .slideInLeft; }
-      &-leave-active { @extend .slideOutRight; }
+      &-leave-active { @extend .still; }
     }
     &-right {
       &-enter-active { @extend .slideInRight; }
-      &-leave-active { @extend .slideOutLeft; }
+      &-leave-active { @extend .still; }
     }
   }
 
