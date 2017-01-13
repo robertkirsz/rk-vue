@@ -5,7 +5,7 @@
       <transition name="page-navigation-animation">
         <page-navigation v-if="showPageNavigation" />
       </transition>
-      <transition :name="animationDirection">
+      <transition :name="routerAnimationName">
         <router-view />
       </transition>
     </div>
@@ -27,7 +27,7 @@
       return {
         title: 'Robert Kirsz',
         showPageNavigation: this.$route.path !== '/' && this.$route.path !== '/nav',
-        animationDirection: null, // Used to determine animation direction
+        routerAnimationName: null, // Used to determine animation direction
         debug: false // Shows media queries
       }
     },
@@ -39,15 +39,20 @@
         this.title = this.showPageNavigation
           ? `Robert Kirsz - ${_capitalize(to.path.substr(1))}`
           : 'Robert Kirsz'
+
         // Determine animation direction based on route indexes
-        this.animationDirection =
-          to.meta.routeIndex < 1
-            ? to.meta.routeIndex < from.meta.routeIndex
-              ? 'route-animation-top'
-              : 'route-animation-bottom'
-            : to.meta.routeIndex < from.meta.routeIndex
-              ? 'route-animation-left'
-              : 'route-animation-right'
+        if (from.name === 'Navigation' && to.meta.routeIndex > 0) {
+          this.routerAnimationName = 'router-animation-fade'
+        } else {
+          this.routerAnimationName =
+            to.meta.routeIndex < 1
+              ? to.meta.routeIndex < from.meta.routeIndex
+                ? 'router-animation-top'
+                : 'router-animation-bottom'
+              : to.meta.routeIndex < from.meta.routeIndex
+                ? 'router-animation-left'
+                : 'router-animation-right'
+        }
       },
       title (value) {
         document.title = value
@@ -88,21 +93,23 @@
   .page { z-index: 3; }
   .pages-navigation { z-index: 4; }
 
-  .route-animation {
+  .router-animation {
+    &-fade {
+      &-enter-active:not(.navigation-page) { @extend .fadeIn; }
+      &-leave-active:not(.navigation-page) { @extend .fadeOut; }
+    }
     &-top {
       &-enter-active {
         @extend .slideInTop;
-        &.intro-page { @extend .headerShow; }
+        &.intro-page { @extend .introShow; }
       }
-      &-leave-active {
-        @extend .slideOutBottom;
-      }
+      &-leave-active { @extend .slideOutBottom; }
     }
     &-bottom {
       &-enter-active { @extend .slideInBottom; }
       &-leave-active {
         @extend .slideOutTop;
-        &.intro-page { @extend .headerHide; }
+        &.intro-page { @extend .introHide; }
       }
     }
     &-left {
@@ -116,7 +123,7 @@
   }
 
   .page-navigation-animation {
-    &-enter-active { @extend .fadeIn; }
-    &-leave-active { @extend .fadeOut; }
+    &-enter-active { @extend .pageNavigationShow; }
+    &-leave-active { @extend .pageNavigationHide; }
   }
 </style>

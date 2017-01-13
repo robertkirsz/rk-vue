@@ -5,6 +5,8 @@
   animation-duration: $time;
 }
 
+.fadeIn         { @extend %animation; animation-name: fadeIn; }
+.fadeOut        { @extend %animation; animation-name: fadeOut; }
 .slideInLeft    { @extend %animation; animation-name: slideInLeft; }
 .slideOutLeft   { @extend %animation; animation-name: slideOutLeft; }
 .slideInRight   { @extend %animation; animation-name: slideInRight; }
@@ -13,10 +15,12 @@
 .slideOutTop    { @extend %animation; animation-name: slideOutTop; }
 .slideInBottom  { @extend %animation; animation-name: slideInBottom; }
 .slideOutBottom { @extend %animation; animation-name: slideOutBottom; }
-.headerShow     { @extend %animation; animation-name: headerShow; }
-.headerHide     { @extend %animation; animation-name: headerHide; }
-.fadeIn         { @extend %animation; animation-name: fadeIn; }
-.fadeOut        { @extend %animation; animation-name: fadeOut; }
+.introShow      { @extend %animation; animation-name: introShow; }
+.introHide      { @extend %animation; animation-name: introHide; }
+.pageNavigationShow { @extend %animation; animation-name: pageNavigationShow; }
+.pageNavigationHide { @extend %animation; animation-name: pageNavigationHide; }
+
+// Generic animations
 
 @keyframes fadeIn {
   0%   { opacity: 0; }
@@ -68,16 +72,26 @@
   100% { transform: translateY(100%); }
 }
 
-@keyframes headerShow {
+// Element-specific animations
+
+@keyframes introShow {
   from { transform: translateY(-200px); opacity: 0.25; }
   to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes headerHide {
+@keyframes introHide {
   to { transform: translateY(-200px); opacity: 0.25; }
 }
 
-// Pagination
+@keyframes pageNavigationShow {
+  0%   { transform: translateX(-50%) translateY(200%); opacity: 0; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+@keyframes pageNavigationHide {
+  0%   { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(200%); opacity: 0; }
+}
 
 @keyframes page-move {
 	  0% { transform: scale(1, 1); }
