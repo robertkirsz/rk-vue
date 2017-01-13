@@ -9,7 +9,7 @@
     </router-link>
     <span
       class="marker"
-      :class="{ animate: animateMarker }"
+      :class="{ animate: animateMarker, 'no-transition': noTransition }"
       :style="markerStyle"
       ref="marker"
     />
@@ -34,18 +34,17 @@
         markerPosition: 0,
         animateMarker: false, // Animates marker size
         activeLinkDOM: null, // Active navigation element
-        markerSizeDifference: 5
+        markerSizeDifference: 5,
+        noTransition: true // Disables initial transition
       }
     },
     mounted () {
       // Removes animation class of the marker when it ends
       // so that the animation can be triggered again later
-      // TODO: maybe it can be controlled by Vue transitions?
       this.$refs.marker.addEventListener('animationend', () => {
         this.animateMarker = false
       })
       // Save initial active navigation element
-      // TODO: transition is triggered here and it shouldn't - take care of that
       this.activeLinkDOM = document.querySelector('.router-link-active')
     },
     computed: {
@@ -54,7 +53,9 @@
       }
     },
     watch: {
-      markerPosition () {
+      markerPosition (next, prev) {
+        // Enable transition after initial values are calculated
+        if (this.noTransition && prev !== 0) this.noTransition = false
         // Trigger scale animation when marker position changes
         this.animateMarker = true
       },
@@ -118,9 +119,10 @@
     display: inline-block;
     transition: left 0.4s ease;
     background: white;
-    &.animate {
-      // transition: none;
-      animation: marker-animation 0.5s ease 0s forwards;
+    &.animate { animation: marker-animation 0.5s ease 0s forwards; }
+    &.no-transition {
+      animation: none;
+      transition: none;
     }
   }
 
